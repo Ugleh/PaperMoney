@@ -35,6 +35,9 @@ public class TapCompleterPaperMoney implements TabCompleter {
                     }
                     list = l;
                 }else if(args.length == 3) {
+                    l.add("100");
+                    l.add("200");
+                    l.add("300");
                     list = l;
                 }
             }else if(args[0].equalsIgnoreCase("reload")) {
