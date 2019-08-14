@@ -1,0 +1,30 @@
+name: PaperMoney
+main: com.ugleh.papermoney.PaperMoney
+description: Adds paper money to your economy plugin!
+author: Ugleh
+version: "1.0"
+api-version: "1.13"
+depend: [Vault]
+commands:
+  papermoney:
+    permission: papermoney.admin
+    description: Command used to access admin related features
+  deposit:
+    permission: papermoney.deposit
+    description: Used to deposit a bank note into your eco balance
+  withdraw:
+    permission: papermoney.withdraw
+    description: Used to withdraw a bank note from your eco balance
+permissions:
+  papermoney.*:
+    default: op
+    children:
+      - papermoney.admin
+      - papermoney.withdraw
+      - papermoney.deposit
+  papermoney.admin:
+    default: op
+  papermoney.withdraw:
+    default: true
+  papermoney.deposit:
+    default: true
