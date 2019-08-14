@@ -4,9 +4,11 @@ import com.ugleh.papermoney.command.CommandDeposit;
 import com.ugleh.papermoney.command.CommandPaperMoney;
 import com.ugleh.papermoney.command.CommandWithdraw;
 import com.ugleh.papermoney.config.ConfigGeneral;
+import com.ugleh.papermoney.listener.PaperMoneyListener;
 import com.ugleh.papermoney.tapcompleter.TapCompleterPaperMoney;
 import net.milkbowl.vault.economy.Economy;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -35,10 +37,14 @@ public class PaperMoney extends JavaPlugin {
         }
         instance = this;
         createBankNote();
+
         this.getCommand("papermoney").setExecutor(new CommandPaperMoney());
         this.getCommand("papermoney").setTabCompleter(new TapCompleterPaperMoney());
         this.getCommand("deposit").setExecutor(new CommandDeposit());
         this.getCommand("withdraw").setExecutor(new CommandWithdraw());
+
+        Bukkit.getPluginManager().registerEvents(new PaperMoneyListener(), PaperMoney.getInstance());
+
     }
 
     @Override
